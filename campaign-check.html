@@ -1,0 +1,232 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Campaign Check by theMiracle</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+  :root{--ink:#262036;--sub:#6f6a85;--violet:#8b6dff;--lav:#f5f4fb;--lav2:#ece9f8;--line:#e6e2f5;--bg:#ffffff}
+  *{box-sizing:border-box;margin:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Poppins',-apple-system,sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.55}
+  body::before{content:'';position:fixed;inset:0;z-index:-1;background-image:radial-gradient(#e9e5f7 1px,transparent 1px);background-size:26px 26px;opacity:0.55}
+  body::after{content:'';position:fixed;z-index:-1;width:640px;height:640px;right:-200px;top:-160px;border-radius:50%;background:radial-gradient(circle,rgba(139,109,255,0.10),transparent 65%)}
+  .wrap{max-width:1020px;margin:0 auto;padding:0 24px}
+  nav{position:sticky;top:0;background:rgba(255,255,255,0.86);backdrop-filter:blur(10px);z-index:50;border-bottom:1px solid var(--line)}
+  nav .in{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1020px;margin:0 auto}
+  .logo{display:flex;align-items:center;gap:8px;font-weight:600;font-size:16px}
+  .spark{width:19px;height:19px}
+  .navtag{font-size:11px;color:var(--violet);font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin-left:12px;padding-left:12px;border-left:1px solid var(--line)}
+  .btn{background:var(--ink);color:#fff;border:none;border-radius:999px;padding:10px 20px;font-family:inherit;font-size:13.5px;font-weight:500;cursor:pointer;text-decoration:none;display:inline-block}
+  .btn.violet{background:var(--violet)}
+  .btn:hover{opacity:0.92}
+  .chapter{min-height:64vh;display:flex;flex-direction:column;justify-content:center;padding:52px 0}
+  .duo{display:grid;grid-template-columns:1.05fr 0.95fr;gap:48px;align-items:center}
+  .feed{background:var(--lav);border-radius:26px;padding:18px;box-shadow:0 22px 50px rgba(38,32,54,0.13)}
+  .fscreen{background:#fff;border-radius:18px;padding:18px}
+  .fhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+  .fhead .k{font-weight:600;font-size:14px}
+  .fhead .d{font-size:11px;color:var(--sub)}
+  .entry{display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--lav2);padding:10px 2px;font-size:12.5px}
+  .entry:last-of-type{border-bottom:none}
+  .addr{font-family:ui-monospace,monospace;font-size:12px}
+  .when{color:#a49ec2;font-size:11px;margin-left:auto}
+  .flag{font-size:10px;font-weight:600;color:#b0521f;background:#fdf1ec;border-radius:5px;padding:2px 7px}
+  .flag.okf{color:#177245;background:#eefaf2}
+  .ffoot{font-size:11px;color:var(--sub);margin-top:10px;text-align:center}
+  .chapter.short{min-height:auto;padding:50px 0}
+  .kicker{font-size:12px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:var(--violet);margin-bottom:14px}
+  h1{font-size:42px;line-height:1.14;font-weight:600;letter-spacing:-0.02em;max-width:19ch}
+  h2{font-size:32px;line-height:1.18;font-weight:600;letter-spacing:-0.02em;max-width:24ch}
+  h1 em,h2 em{font-style:normal;color:var(--violet)}
+  .sub{color:var(--sub);margin-top:16px;font-size:16px;max-width:52ch}
+  .bignum{font-size:92px;font-weight:700;letter-spacing:-0.04em;line-height:1.05;color:var(--violet)}
+  .bignum small{font-size:28px;font-weight:600;color:var(--ink);letter-spacing:-0.02em}
+  .rv{opacity:0;transform:translateY(26px);transition:opacity 0.7s ease,transform 0.7s ease}
+  .rv.in{opacity:1;transform:none}
+  .d1{transition-delay:0.08s}.d2{transition-delay:0.18s}.d3{transition-delay:0.28s}.d4{transition-delay:0.4s}
+  .scrollcue{margin-top:44px;color:var(--sub);font-size:12.5px;display:flex;align-items:center;gap:10px}
+  .scrollcue .dot{width:22px;height:34px;border:1.5px solid #c9c2e6;border-radius:12px;position:relative}
+  .scrollcue .dot::after{content:'';position:absolute;left:50%;top:7px;width:3px;height:7px;margin-left:-1.5px;border-radius:2px;background:var(--violet);animation:drip 1.6s infinite}
+  @keyframes drip{0%{transform:translateY(0);opacity:1}70%{transform:translateY(10px);opacity:0}100%{opacity:0}}
+  .bars{margin-top:34px;max-width:640px}
+  .bar{display:flex;align-items:center;gap:12px;margin-top:12px;font-size:13px}
+  .bar .lab{width:160px;color:var(--sub)}
+  .track{flex:1;background:var(--lav);border-radius:8px;height:20px;overflow:hidden}
+  .fill{height:100%;border-radius:8px;background:var(--violet);width:0;transition:width 1.1s cubic-bezier(.2,.7,.2,1)}
+  .fill.mid{background:#c3b5f5}.fill.old{background:#262036}
+  .in .fill{width:var(--w)}
+  .bar .pc{width:44px;text-align:right;font-weight:600;font-size:14px}
+  .report{background:var(--lav);border-radius:24px;padding:24px;box-shadow:0 18px 44px rgba(38,32,54,0.10);max-width:720px;margin-top:34px}
+  .rcard{background:#fff;border-radius:18px;padding:22px 24px}
+  .rhead{display:flex;justify-content:space-between;align-items:center;padding-bottom:14px;border-bottom:1px solid var(--lav2)}
+  .rhead .k{font-weight:600;font-size:14.5px}
+  .rhead .d{font-size:12px;color:var(--sub)}
+  .sample{font-size:10px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--violet);background:var(--lav);border-radius:6px;padding:3px 8px}
+  .stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:16px 0 6px}
+  .stat{background:var(--lav);border-radius:14px;padding:14px 15px}
+  .stat .n{font-size:24px;font-weight:600;letter-spacing:-0.02em}
+  .stat .l{font-size:11.5px;color:var(--sub);margin-top:3px;line-height:1.35}
+  .rfoot{border-top:1px solid var(--lav2);margin-top:12px;padding-top:14px;font-size:13px;color:var(--sub)}
+  .rfoot b{color:var(--ink)}
+  .picky{background:var(--ink);border-radius:26px;padding:36px 38px;color:#fff;max-width:860px}
+  .picky h2{color:#fff}
+  .picky p{color:#c9c3dd;font-size:14.5px;margin-top:12px;max-width:66ch}
+  .picky b{color:#fff}
+  .meth{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:20px}
+  .mcard{background:rgba(255,255,255,0.07);border-radius:14px;padding:14px 16px;font-size:13px;color:#c9c3dd}
+  .mcard b{color:#fff;display:block;margin-bottom:4px;font-size:13.5px}
+  .form{margin-top:28px;background:var(--lav);border-radius:20px;padding:20px;max-width:560px}
+  .form input{width:100%;border:1px solid var(--line);border-radius:12px;background:#fff;padding:14px 16px;font-family:inherit;font-size:14.5px;color:var(--ink);margin-bottom:10px}
+  .form input::placeholder{color:#a49ec2}
+  .form .row{display:flex;gap:10px}
+  .form .row input{flex:1;margin-bottom:0}
+  .fine{font-size:12px;color:var(--sub);margin-top:12px}
+  .ok{display:none;background:#eefaf2;color:#177245;border-radius:14px;padding:16px 18px;font-size:14.5px;font-weight:500;max-width:560px;margin-top:28px}
+  .others{margin-top:22px;font-size:13px;color:var(--sub);max-width:60ch}
+  .others b{color:var(--ink)}
+  footer{margin:30px 0;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:12px;color:var(--sub)}
+  @media(max-width:760px){.duo{grid-template-columns:1fr}h1{font-size:31px}h2{font-size:25px}.bignum{font-size:56px}.stats,.meth{grid-template-columns:1fr}.chapter{min-height:auto;padding:48px 0}}
+</style>
+</head>
+<body>
+
+<nav><div class="in">
+  <div class="logo">
+    <svg class="spark" viewBox="0 0 24 24" fill="none"><path d="M12 2c.6 4.8 1.4 6.7 3.2 8.2C16.9 11.6 19 12 22 12c-4.8.6-6.7 1.4-8.2 3.2C12.4 16.9 12 19 12 22c-.6-4.8-1.4-6.7-3.2-8.2C7.1 12.4 5 12 2 12c4.8-.6 6.7-1.4 8.2-3.2C11.6 7.1 12 5 12 2z" fill="#8b6dff"/></svg>
+    themiracle<span class="navtag">Campaign Check</span>
+  </div>
+  <a class="btn" href="#check">Run my check</a>
+</div></nav>
+
+<div class="wrap">
+
+<section class="chapter">
+  <div class="duo">
+    <div>
+      <div class="kicker rv">what happens after every quest campaign</div>
+      <h1 class="rv d1">Your campaign got <em><span data-count="30412">0</span> entries</em></h1>
+      <p class="sub rv d2">The dashboard looked great and the report went out with a big number on top</p>
+      <div class="scrollcue rv d3"><span class="dot"></span> keep going, this is where it gets uncomfortable</div>
+    </div>
+    <div class="feed rv d2">
+      <div class="fscreen">
+        <div class="fhead"><span class="k">Quest entries</span><span class="d">what we see on-chain</span></div>
+        <div class="entry"><span class="addr">0x7f3a…c21e</span><span class="flag">wallet age 3 days</span><span class="when">2m ago</span></div>
+        <div class="entry"><span class="addr">0x94d1…08bb</span><span class="flag">no activity outside claims</span><span class="when">2m ago</span></div>
+        <div class="entry"><span class="addr">0x2c88…f9ba</span><span class="flag okf">2 years, real history</span><span class="when">3m ago</span></div>
+        <div class="entry"><span class="addr">0xb15e…77d0</span><span class="flag">same funder as 214 others</span><span class="when">4m ago</span></div>
+        <div class="entry"><span class="addr">0x60aa…9e3c</span><span class="flag">wallet age 1 day</span><span class="when">4m ago</span></div>
+        <div class="ffoot">30,412 total entries · the page you get says how many are like row three</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="chapter">
+  <div class="kicker rv">then it gets awkward</div>
+  <h2 class="rv d1">Someone asks how many of them were people</h2>
+  <p class="sub rv d2">It might be an investor or just the voice in your own head, so we looked at the wallets, public chain data only</p>
+  <div class="bars rv d3">
+    <div class="bar"><span class="lab">Created under 30 days ago</span><div class="track"><div class="fill" style="--w:64%"></div></div><span class="pc">64%</span></div>
+    <div class="bar"><span class="lab">30 to 90 days old</span><div class="track"><div class="fill mid" style="--w:17%"></div></div><span class="pc">17%</span></div>
+    <div class="bar"><span class="lab">Older than 90 days</span><div class="track"><div class="fill old" style="--w:19%"></div></div><span class="pc">19%</span></div>
+  </div>
+  <p class="sub rv d4">Two thirds were born for the campaign, and most have no life outside claiming things</p>
+</section>
+
+<section class="chapter">
+  <div class="kicker rv">the number we published</div>
+  <div class="bignum rv d1"><span data-count="40000">0</span> <small>entries</small></div>
+  <div class="bignum rv d2" style="color:var(--ink)">→ <span style="color:var(--violet)"><span data-count="8200">0</span></span> <small>real users</small></div>
+  <p class="sub rv d3">Our Doodles campaign inside Solflare: 40,000 entries became 8,200 verified humans at $1.20 each. Four out of five were noise, and the budget paid for all five</p>
+</section>
+
+<section class="chapter">
+  <div class="kicker rv">what you get from us</div>
+  <h2 class="rv d1">We run the same check on yours, <em>one page back inside 24 hours, free</em></h2>
+  <div class="report rv d2">
+    <div class="rcard">
+      <div class="rhead">
+        <div>
+          <div class="k">Campaign Check · [Project] August quest</div>
+          <div class="d">30,412 entrant wallets · public on-chain data only</div>
+        </div>
+        <span class="sample">Sample</span>
+      </div>
+      <div class="stats">
+        <div class="stat rv d1"><div class="n">64%</div><div class="l">wallets created within 30 days of campaign start</div></div>
+        <div class="stat rv d2"><div class="n">41%</div><div class="l">no activity outside quest claims</div></div>
+        <div class="stat rv d3"><div class="n">~8,900</div><div class="l">estimated real participants</div></div>
+      </div>
+      <div class="rfoot rv d4">At the <b>$1.20 per verified user</b> benchmark, these ~8,900 real people cost about <b>$10,700</b> inside a wallet placement. Your check ends with the spec that reaches only them.</div>
+    </div>
+  </div>
+</section>
+
+<section class="chapter short">
+  <div class="picky rv">
+    <h2>Fair warning, we are picky</h2>
+    <p>Wallet placements only accept <b>exclusive offers</b>, campaigns that beat what a brand runs publicly. We reject the rest to protect the surface people trust, and if yours does not qualify yet, the check says so and you keep the page anyway.</p>
+    <div class="meth">
+      <div class="mcard rv d1"><b>What we look at</b>Wallet age, activity outside claims, shared funders.</div>
+      <div class="mcard rv d2"><b>What we never claim</b>Signals, never accusations. One fresh wallet means nothing, ten thousand from the same three funders is worth knowing about.</div>
+      <div class="mcard rv d3"><b>Where the numbers come from</b>Published campaigns for Doodles, human.tech, Claynosaurz and Pudgy, all checkable.</div>
+    </div>
+  </div>
+</section>
+
+<section class="chapter" id="check">
+  <div class="kicker rv">your number is sitting on-chain right now</div>
+  <h2 class="rv d1">Find out what yours is</h2>
+  <p class="sub rv d2">Two boxes and we handle the rest, we even find your campaigns ourselves, which is sort of the point</p>
+  <div class="form rv d3" id="form">
+    <input id="proj" type="text" placeholder="Your project (name or X handle), that's all we need">
+    <div class="row">
+      <input id="contact" type="text" placeholder="Where we send it (email or telegram handle)">
+      <button class="btn violet" onclick="submitCheck()">Get my check</button>
+    </div>
+    <div class="fine">No signup, no tracking, a real person sends it within 24 hours.</div>
+  </div>
+  <div class="ok" id="ok">Got it. Your check lands within 24 hours, from a real person, so just reply if you want to talk it through.</div>
+  <p class="others rv d4">The <b>Snapshot Check</b> does the same for points-program wallets, and the <b>Holder Check</b> does it for collections, same two boxes.</p>
+</section>
+
+<footer>
+  <span>theMiracle · behavioral intelligence and wallet distribution · MetaMask + Solflare</span>
+  <span>themiracle.io</span>
+</footer>
+
+</div>
+
+<script>
+var io=new IntersectionObserver(function(es){
+  es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:0.25});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+
+var cio=new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if(!e.isIntersecting)return;
+    cio.unobserve(e.target);
+    var el=e.target,end=parseInt(el.getAttribute('data-count'),10),t0=null,dur=1400;
+    function tick(ts){ if(!t0)t0=ts; var p=Math.min((ts-t0)/dur,1); p=1-Math.pow(1-p,3);
+      el.textContent=Math.round(end*p).toLocaleString('en-US'); if(p<1)requestAnimationFrame(tick); }
+    requestAnimationFrame(tick);
+  });
+},{threshold:0.6});
+document.querySelectorAll('[data-count]').forEach(function(el){cio.observe(el);});
+
+function submitCheck(){
+  var p=document.getElementById('proj').value.trim();
+  var c=document.getElementById('contact').value.trim();
+  if(!p||!c){ (p?document.getElementById('contact'):document.getElementById('proj')).focus(); return; }
+  /* TODO before hosting: POST {project, contact, ts} to the capture endpoint (formspree / hub webhook / sheet).
+     Log every submission as a pipeline row, source: campaign-check. */
+  document.getElementById('form').style.display='none';
+  document.getElementById('ok').style.display='block';
+}
+</script>
+</body>
+</html>

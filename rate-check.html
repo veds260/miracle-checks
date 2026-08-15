@@ -1,0 +1,201 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rate Check by theMiracle</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+  :root{--ink:#262036;--sub:#6f6a85;--violet:#8b6dff;--lav:#f5f4fb;--lav2:#ece9f8;--line:#e6e2f5;--bg:#ffffff}
+  *{box-sizing:border-box;margin:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Poppins',-apple-system,sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.55}
+  body::before{content:'';position:fixed;inset:0;z-index:-1;background-image:radial-gradient(#e9e5f7 1px,transparent 1px);background-size:26px 26px;opacity:0.55}
+  body::after{content:'';position:fixed;z-index:-1;width:640px;height:640px;right:-200px;top:-160px;border-radius:50%;background:radial-gradient(circle,rgba(139,109,255,0.10),transparent 65%)}
+  .wrap{max-width:1020px;margin:0 auto;padding:0 24px}
+  nav{position:sticky;top:0;background:rgba(255,255,255,0.86);backdrop-filter:blur(10px);z-index:50;border-bottom:1px solid var(--line)}
+  nav .in{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1020px;margin:0 auto}
+  .logo{display:flex;align-items:center;gap:8px;font-weight:600;font-size:16px}
+  .spark{width:19px;height:19px}
+  .navtag{font-size:11px;color:var(--violet);font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin-left:12px;padding-left:12px;border-left:1px solid var(--line)}
+  .btn{background:var(--ink);color:#fff;border:none;border-radius:999px;padding:10px 20px;font-family:inherit;font-size:13.5px;font-weight:500;cursor:pointer;text-decoration:none;display:inline-block}
+  .btn.violet{background:var(--violet)}
+  .btn:hover{opacity:0.92}
+  .chapter{min-height:64vh;display:flex;flex-direction:column;justify-content:center;padding:52px 0}
+  .duo{display:grid;grid-template-columns:1.05fr 0.95fr;gap:48px;align-items:center}
+  .chapter.short{min-height:auto;padding:50px 0}
+  .kicker{font-size:12px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:var(--violet);margin-bottom:14px}
+  h1{font-size:40px;line-height:1.16;font-weight:600;letter-spacing:-0.02em;max-width:22ch}
+  h2{font-size:31px;line-height:1.18;font-weight:600;letter-spacing:-0.02em;max-width:26ch}
+  h1 em,h2 em{font-style:normal;color:var(--violet)}
+  .sub{color:var(--sub);margin-top:16px;font-size:16px;max-width:54ch}
+  .rv{opacity:0;transform:translateY(26px);transition:opacity 0.7s ease,transform 0.7s ease}
+  .rv.in{opacity:1;transform:none}
+  .d1{transition-delay:0.08s}.d2{transition-delay:0.18s}.d3{transition-delay:0.28s}.d4{transition-delay:0.4s}
+  .scrollcue{margin-top:44px;color:var(--sub);font-size:12.5px;display:flex;align-items:center;gap:10px}
+  .scrollcue .dot{width:22px;height:34px;border:1.5px solid #c9c2e6;border-radius:12px;position:relative}
+  .scrollcue .dot::after{content:'';position:absolute;left:50%;top:7px;width:3px;height:7px;margin-left:-1.5px;border-radius:2px;background:var(--violet);animation:drip 1.6s infinite}
+  @keyframes drip{0%{transform:translateY(0);opacity:1}70%{transform:translateY(10px);opacity:0}100%{opacity:0}}
+  .phone{background:var(--lav);border-radius:26px;padding:18px;box-shadow:0 22px 50px rgba(38,32,54,0.13)}
+  .screen{background:#fff;border-radius:18px;padding:18px}
+  .phead{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+  .phead .k{font-weight:600;font-size:14px}
+  .phead .d{font-size:11px;color:var(--sub)}
+  .offer{display:flex;gap:12px;align-items:center;background:var(--lav);border-radius:14px;padding:12px 13px;margin-top:10px}
+  .offer img{width:34px;height:34px;border-radius:9px;background:#fff;object-fit:contain;padding:4px}
+  .offer .k{font-size:13px;font-weight:600;line-height:1.3}
+  .offer .m{font-size:11px;color:var(--sub);margin-top:1px}
+  .claim{margin-left:auto;background:var(--violet);color:#fff;font-size:11px;font-weight:600;border-radius:999px;padding:6px 12px;flex:0 0 auto}
+  .pfoot{font-size:10.5px;color:#a49ec2;margin-top:12px;text-align:center}
+  .bars{margin-top:34px;max-width:660px}
+  .bar{display:flex;align-items:center;gap:12px;margin-top:12px;font-size:13px}
+  .bar .lab{width:150px;color:var(--sub)}
+  .track{flex:1;background:var(--lav);border-radius:8px;height:20px;overflow:hidden}
+  .fill{height:100%;border-radius:8px;background:#262036;width:0;transition:width 1.1s cubic-bezier(.2,.7,.2,1)}
+  .fill.hi{background:var(--violet)}
+  .in .fill{width:var(--w)}
+  .bar .pc{width:52px;text-align:right;font-weight:600;font-size:14px}
+  .src{font-size:11px;color:#a49ec2;margin-top:12px;max-width:640px}
+  .report{background:var(--lav);border-radius:24px;padding:24px;box-shadow:0 18px 44px rgba(38,32,54,0.10);max-width:720px;margin-top:34px}
+  .rcard{background:#fff;border-radius:18px;padding:22px 24px}
+  .rhead{display:flex;justify-content:space-between;align-items:center;padding-bottom:14px;border-bottom:1px solid var(--lav2)}
+  .rhead .k{font-weight:600;font-size:14.5px}
+  .rhead .d{font-size:12px;color:var(--sub)}
+  .sample{font-size:10px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--violet);background:var(--lav);border-radius:6px;padding:3px 8px}
+  .stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:16px 0 6px}
+  .stat{background:var(--lav);border-radius:14px;padding:14px 15px}
+  .stat .n{font-size:22px;font-weight:600;letter-spacing:-0.02em}
+  .stat .l{font-size:11.5px;color:var(--sub);margin-top:3px;line-height:1.35}
+  .rfoot{border-top:1px solid var(--lav2);margin-top:12px;padding-top:14px;font-size:13px;color:var(--sub)}
+  .rfoot b{color:var(--ink)}
+  .picky{background:var(--ink);border-radius:26px;padding:36px 38px;color:#fff;max-width:860px}
+  .picky h2{color:#fff}
+  .picky p{color:#c9c3dd;font-size:14.5px;margin-top:12px;max-width:66ch}
+  .picky b{color:#fff}
+  .form{margin-top:28px;background:var(--lav);border-radius:20px;padding:20px;max-width:560px}
+  .form input{width:100%;border:1px solid var(--line);border-radius:12px;background:#fff;padding:14px 16px;font-family:inherit;font-size:14.5px;color:var(--ink);margin-bottom:10px}
+  .form input::placeholder{color:#a49ec2}
+  .form .row{display:flex;gap:10px}
+  .form .row input{flex:1;margin-bottom:0}
+  .fine{font-size:12px;color:var(--sub);margin-top:12px}
+  .ok{display:none;background:#eefaf2;color:#177245;border-radius:14px;padding:16px 18px;font-size:14.5px;font-weight:500;max-width:560px;margin-top:28px}
+  footer{margin:30px 0;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:12px;color:var(--sub)}
+  @media(max-width:760px){.duo{grid-template-columns:1fr}h1{font-size:29px}h2{font-size:24px}.stats{grid-template-columns:1fr}.chapter{min-height:auto;padding:48px 0}}
+</style>
+</head>
+<body>
+
+<nav><div class="in">
+  <div class="logo">
+    <svg class="spark" viewBox="0 0 24 24" fill="none"><path d="M12 2c.6 4.8 1.4 6.7 3.2 8.2C16.9 11.6 19 12 22 12c-4.8.6-6.7 1.4-8.2 3.2C12.4 16.9 12 19 12 22c-.6-4.8-1.4-6.7-3.2-8.2C7.1 12.4 5 12 2 12c4.8-.6 6.7-1.4 8.2-3.2C11.6 7.1 12 5 12 2z" fill="#8b6dff"/></svg>
+    themiracle<span class="navtag">Rate Check</span>
+  </div>
+  <a class="btn" href="#check">Run my check</a>
+</div></nav>
+
+<div class="wrap">
+
+<section class="chapter">
+  <div class="duo">
+    <div>
+      <div class="kicker rv">a channel your media plan has not met yet</div>
+      <h1 class="rv d1">35 million people check their crypto wallet like an inbox. <em>Diesel already sells there</em></h1>
+      <p class="sub rv d2">MetaMask and Solflare show people offers matched to what they actually spend on. It runs like affiliate, pay per click or per sale, and the shelf already carries Margiela, BMW and airBaltic</p>
+      <div class="scrollcue rv d3"><span class="dot"></span> the numbers are the interesting part</div>
+    </div>
+    <div class="phone rv d2">
+      <div class="screen">
+        <div class="phead"><span class="k">Rewards · Benefits</span><span class="d">inside MetaMask</span></div>
+        <div class="offer"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHIAAAByCAMAAAC4A3VPAAAAkFBMVEXjACvkASz////kAizjACn2qbf97O/+9PbvaYLnIUb73ePwc4vpN1jvZ4DrPl71na3xgJbrQ2PmGUD61Nv++vvpLlHlDjbsUG3zjqHlCDHwb4fyhprzk6XjACblDDXwd47tW3b3tcL85+voKUz4vMf2rrvuXXjtVHD5yNL71t31o7L6ztb5xM33usXyip3qO1sKrxdcAAAF60lEQVRoge2YeZ+qLBTHMSjDLJVCo6xMR0tr6v2/u+ewaOt4Z+pz77P5+0MFDnxlOywIderUqVOnTp06derU6Tuy/rg6ZIf8PyERIeTHJZgMWGY2Qvi6RFUoJnfCWGYRlLucYfJQRG1Tf1nW1a+ZD8RHUothEVBRp5KzihwyZJIbBQhjEiZ5ORikhznHMgNiixubnUDhWFsDnEf8DkmGPa2Z7eRFqP+b+Cpq4BIy7t1oTjDJ8pkJOWMhrSf2jc1WEOqoL88ifLTxOXmOVNjPM/oVktCPS3CQoF8gg2JTBC1I+G+V3IYU8XV4Skk7Mlsko6wV2TtAGW3I1WRwE7GBlm5BIpwFX/WlXffPCVIekfZAyV4SXUknXh7UxzFENbK26V8h5Yglz5H2KIr17zsZwg/I2eg8UaKhItk7RFyntjHI2NhwfI18nJc1MlhhzZmNCXpEBisz03hq6oaRqu8saZCj2ua7SEKypgOeIM2sJ4EqvrJgeg5NZzZI04L420i01qN/H36NtEik+jwXUO5OJc3xPRKsvonEVt90JmlBBjNjA6QDaOpbryMtrAejfW5DunqQnQTCIpRav1FLC530Z9SCRKzUSdLtmG3bO0gzZIsWpCV06/fSpCnpDaQB9YbPkUhlIYlxNYMhtC2+R6IfIje6sMUjsrf1pCYADmuvbvshUcwauVc2u1eQMKW/8LFj6X+D2snOPEaukVrzHyFHOtPmSS0vSMva1O6411fM349E63nDzJncJfxuJMYoXDYMD5ztO8jN18jZzLZtmD6AhKxi1PTnCDcNK21ms9NLw+fJJPEjKVrv0fDOMUyHN+ulp2z4K8in83JFrneuiJz3TUPWyEVj81NXAAvmM1eAMb5khjGTfWpkSS+uQG5y8U+QaKmL37U5PAvrjMA86qRo9brDs+b1ZxtyrZYPWU/jE0bvICsN4m0rSVh9gDyYj0ho+/kbyLXunSlr2RWYxQs6sNmJxK8jCdVL4VY82eFdaqlGasolspi9V8sVGWs/5pNnyJVajgkRuR4zEunf92V919IgMbm+fLlD7ujYqev7BJkwI6yHtSegVQ6aXiP92qbZOlc6vH6K7Dmp8dWf4bMDgjNVKvNQb/HsOEr0wlmyel6mxuaY1ciBjkgIfoasBTsf3HImmTKmDwbgUfX79HAmgSFPneuIResxaHZSJ8YWZO0WjcqMvIe05yH6FZJ9Xhe/u1+8foYcfMKZG98i79pdTtrscqZ1EvwCMuhrVafhOTRrBdnlMsqjpEk2OkErEOYf4Gw4s8s5V3cFWXVjA9lYfB0R6G1ZcyOiVgis7zUsfBOpXlfrh2WCBLOgGBYBw2oo4rtFRus223UtdaIpHOMbG3xX2sUa1bctuIm8Yz7m+hfebr2FVD4QwQKN5KfeR+iANKk/iTI0YaLfjREyBelHEwebEp333scGXuyH4cLbMLTz4iXsqETi+RQPEzZiIol9GH9+XAgax/NMFJCEgvjkEjAeiWgTLjK2lLcsZOLDaC7GYrFbbzjEsfnEHVps4y1CdIscpstILNJxeULzcmkXBLHDtOIij+kHDZzhJrLi427J3NQrGCunHiSl/YicHD+w/CPbBlxdFpExuAnL62P/GO0pxHH74PeFv9/FD7dbgyojp5Iec+uUHkpIXm+OqS9yjx9pkmaUi21fnEN3sI3I2j+mI1x8pJVYpjEj/p4qJAxuQFILkIiXhzmSyMOHnYtqmxyje+SeWeR87B925LQdHzKoZVyVG+w7H9uQbqu8IMkx7lOe5t4ZkpyR8KuDJ5ZbyJc42z3nznYJTqlI+4t1XFmiGkxWWRnwrbvPrWifO+NbJGIuOHJMgwxbGQ/PDH6YBu4ahZOAYsQCmcwDKsMBU0kWCyYMUQ7zTbiwVV67E1dgi50DLjKIpa5AazdccwE2kDdjt30Js1o+5R0UPGB0wbxVV7NIPrRLkhF69utY9dCOoE4x7kHFIpkCo1WHrnbc/y9X8B9H4j+uvwPZqVOnTp06derUqVOnf6j+AmVNl99YLTpSAAAAAElFTkSuQmCC" alt="Diesel"><span><span class="k">Unlock 20% off + early access</span><div class="m">Diesel · exclusive to wallet users</div></span><span class="claim">Claim</span></div>
+        <div class="offer"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAAIVBMVEW/1i6+1S0AAlUJElhMWEaluj60yTouN02QpEV/j0tmdUmU071wAAADHElEQVR4nO2W2XrjIAyFwSCxvP8Dz5EExE7TfqaTduZC/4UTMMuxNgjBcRzHcRzHcRzHcRzHcRzHcRzH+c+Ji1N7/T76r2PP/ISATzb4MQH2M9vPG57ba+R88Q4BoYKHAK4LfhZArTbWEYQXhN/wLQExXCyYjyOTdeJJ5RiUPCTMkbGhlwLhiZ1Z5j255fZXXyYNAaNFJaWkAtKR6nVkQ58ISO8SEM4WGEDAURoo2KfQKUhi/CCgrDjZF8CKTBp/2HorBGT1U7aNxlBxjwqIKmB0awzEsdKOAKpdfJ0bxdBz7iyPSB0frwJkLfterk1Glk4qILUMHyE+OskUqOKa4bLUaUPAKdIymwvkUdG7BEAYtiM8B6mqALSTREkhc4H8aMwU2hDQ5BsajJCw7BCQin7pEiC+6BwQirm3jC1zVAsUtUAxzYG7BGvOWeNlQ0AjcbvssQTgO3ol7JsKFsxFumNImQguFn/og6jiiemWBVWNQUzUNywQiSR2LAF4CjhSu6RhQdFBmbJVJfLoYxpy1i6pIrwVhBrcVQ27BKQWpgA1MwKLZWWsTV06LgKCzUtiw2/UgYA0kC1OAkYxkDoAq5O6HQoCk6bBswCzAM1U3RVQNeByuQhgtfWoA0GyAIuTCs35EwuYgJsbPwQgC+DiyucYwD8JDFppKIt3LuKKqpH3NgsEM/hTEJqAsAREFgEwA4LxRRD+TQwESbX+nAXmgmmB4YJm/fGrLEisWRD4vidUAD5RFnwZAwjCqpVByx1pzFwEdI7nOoBCQVqX77sACuS8+yBALJCOeRx3LXSomZcsEDG9WSXUAnJo2doQAN1av0t/FQOz+OM1B7Zmkh3ILiQSwvjsOs+CqbfdL8VRpiG4UD97i3oaNvyzLOiDVkmdj8Mh5UoYgMqVM1sFg93bOg2lene5Pt0XgOJGsr5eBOw6wPNiIU29ANhlZIyM1mvnvvaN+4CNIN64oM6MGSU5Pu6IY8/HFed8Hzpz7Vur7gh4yVfv7vDPBGzeCS9STpruaV6zRjNuHwWO4ziO4ziO4ziO4ziO4ziO4zi/yx+n/hnQcH6S0QAAAABJRU5ErkJggg==" alt="airBaltic"><span><span class="k">€25 airBaltic gift card</span><div class="m">airBaltic · pick a destination and go</div></span><span class="claim">Claim</span></div>
+        <div class="offer"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAAFVBMVEVHcEw+X/8+X/8+YP8+X/8+X/8+X/+7J2yvAAAABnRSTlMA3EojrnpsVdxsAAADC0lEQVR4nO1a7ZKEIAxbvvb9H/kORVaUQlPq3txM8+tmQEiTWL2V18tgMBgMUoQQfMHvn1/e26cYnXtXOBdj8t9hEXw87dzCxadJhETvXhDTcxwGtbc6PEPBs3YvHPStQLbfKKQ/3X5XQW37EPHtM7SykATlFxE0fJCWryWCxP0GiwzS4va/WLJhSf51Bmv2fyAOwqr9FU7EQKv+DIkGQa3+DIEGivVnRHR/hftviYH6/uDdGPT3h3qibgAPAEFUDuABdgweCMAOZgyeMSCDacJDBmSwTPDP7f9+c94THzMgw833BxPoQL5TCdAEepDwNAVgAiJs2UwCfDmQ8iQF4ENgExS8bce9AFtsbywS0qQAmAOltWI5HLZDcKkl2goO1FKwHA48wEo5LQRdN/AAquS8DpZDuhVADjRWQuGhPUCUbBsKZB7ZiyAhLzpCElAhQCJwkxGRgArBvAp3cLwnubJnuEF1gnkG0zGns0QdmddBpXBKINa09S7fBrI0nHV6mGsXDp+6JtaRaZiJVjQlsOvuKALb9aFSERDgXebfVIrqyLSUPoHZXXiUHUkT6wh3KYhA3TSQvSzUWZMcSgicfEv9u2AbKdMmdkoInG0ne1moI+McCgi4dibVyz4jwxwKCLSXOPKB5o6oAKtxCFxi78m3Gl+pjXIIE7jtl8i3mvqb5KgZwARulgeSwGdkkEO0FTP+qe6BXg8lIPz8REpKEaBiI/7BnzIBfB8QGvCiNaUIEIQXvv8RJtBtDKHLQl9UikD3CbL2AbT/UCL/N+tZtvjtsWsrObsjmDyBBZ2iaFM7dJe/QHeCRa95d2wpgTvusg5+IrlOln1va3GralTU1QOVUwhXE0aLXlqXggEZ7aJjVdu5SmcgWgnGVTVz1Y6BJKCq81St/ZtVZ40lsakiOAk7k/UTQ6UE7qj39/zGrhKoHkUKXAFe1S/dg0hHXZxHS2JKhaFYyyorKidwh+fnymsncEfkl5WUE1gA5Er5KFxB4r/cPHRG9csnXw0Gg8FgMBgMBoPBYDD8F/wADRh252T8RTcAAAAASUVORK5CYII=" alt="NordVPN"><span><span class="k">$20 back on NordVPN</span><div class="m">NordVPN · cashback on any plan</div></span><span class="claim">Claim</span></div>
+        <div class="pfoot">live benefit shapes from the current shelf</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="chapter">
+  <div class="kicker rv">why the click-through looks broken</div>
+  <h2 class="rv d1">People opted in to see these offers, which changes the math</h2>
+  <p class="sub rv d2">The offer sits inside an app people open on purpose, and it shows in the click-through:</p>
+  <div class="bars rv d3">
+    <div class="bar"><span class="lab">Display ads</span><div class="track"><div class="fill" style="--w:2%"></div></div><span class="pc">0.5%</span></div>
+    <div class="bar"><span class="lab">Paid social</span><div class="track"><div class="fill" style="--w:3.5%"></div></div><span class="pc">0.9%</span></div>
+    <div class="bar"><span class="lab">Email</span><div class="track"><div class="fill" style="--w:8%"></div></div><span class="pc">2.3%</span></div>
+    <div class="bar"><span class="lab">Google Search</span><div class="track"><div class="fill" style="--w:20%"></div></div><span class="pc">6.7%</span></div>
+    <div class="bar"><span class="lab">In-wallet offers</span><div class="track"><div class="fill hi" style="--w:93%"></div></div><span class="pc">31%</span></div>
+  </div>
+  <div class="src rv d4">Sources: Focus Digital, WebFX, ActiveCampaign, WordStream, theMiracle published campaigns (Claynosaurz 54%, human.tech 63%).</div>
+</section>
+
+<section class="chapter">
+  <div class="kicker rv">what you get from us</div>
+  <h2 class="rv d1">A one-page Rate Check for your brand, <em>free, inside 24 hours</em></h2>
+  <p class="sub rv d2">We look up your current public offer, price the exclusive version, and show what your budget reaches at the benchmarks</p>
+  <div class="report rv d3">
+    <div class="rcard">
+      <div class="rhead">
+        <div>
+          <div class="k">Rate Check · [Brand]</div>
+          <div class="d">built from your public offers and published channel benchmarks</div>
+        </div>
+        <span class="sample">Sample</span>
+      </div>
+      <div class="stats">
+        <div class="stat rv d1"><div class="n">5%</div><div class="l">your current public cashback, found on your affiliate network page</div></div>
+        <div class="stat rv d2"><div class="n">7%</div><div class="l">the exclusive in-wallet rate that clears the channel's bar</div></div>
+        <div class="stat rv d3"><div class="n">~28,000</div><div class="l">estimated offer views per month in your buyer categories, at benchmark engagement</div></div>
+      </div>
+      <div class="rfoot rv d4">Priced per click or per sale, so an offer nobody takes costs nothing. Campaigns start around <b>$10k</b> with <b>$5k minimum reward value</b> behind the offer, and your check ends with the spec built on your numbers.</div>
+    </div>
+  </div>
+</section>
+
+<section class="chapter short">
+  <div class="picky rv">
+    <h2>The catch, told straight</h2>
+    <p>The wallets only accept offers that beat what you run publicly, which protects the surface and is also why the engagement holds. If beating your public rate is off the table, your Rate Check will say so plainly.</p>
+  </div>
+</section>
+
+<section class="chapter" id="check">
+  <div class="kicker rv">your rate card is one lookup away</div>
+  <h2 class="rv d1">Tell us the brand and we will build yours</h2>
+  <p class="sub rv d2">Two boxes, we even find your current public offer ourselves</p>
+  <div class="form rv d3" id="form">
+    <input id="brand" type="text" placeholder="Your brand (name or site)">
+    <div class="row">
+      <input id="contact" type="text" placeholder="Work email">
+      <button class="btn violet" onclick="submitCheck()">Get my Rate Check</button>
+    </div>
+    <div class="fine">No signup, no tracking, a real person sends it within 24 hours.</div>
+  </div>
+  <div class="ok" id="ok">Got it. Your Rate Check lands within 24 hours, from a real person, so just reply if you want to walk through it.</div>
+</section>
+
+<footer>
+  <span>theMiracle · offers inside MetaMask and Solflare · Diesel, Maison Margiela, airBaltic and 50+ brands</span>
+  <span>themiracle.io</span>
+</footer>
+
+</div>
+
+<script>
+var io=new IntersectionObserver(function(es){
+  es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:0.25});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+
+function submitCheck(){
+  var b=document.getElementById('brand').value.trim();
+  var c=document.getElementById('contact').value.trim();
+  if(!b||!c){ (b?document.getElementById('contact'):document.getElementById('brand')).focus(); return; }
+  /* TODO before hosting: POST {brand, contact, ts} to the capture endpoint.
+     Log every submission as a pipeline row, source: rate-check. */
+  document.getElementById('form').style.display='none';
+  document.getElementById('ok').style.display='block';
+}
+</script>
+</body>
+</html>
